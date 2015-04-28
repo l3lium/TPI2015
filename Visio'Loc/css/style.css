@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 avr. 2015, 13:45:04
+    Author     : oliveiras_info
+*/
+.btn, .form-control{
+    border-radius: 0px;
+}
+
+nav {
+    height: auto;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.navbar-brand{
+    font-size: 22pt;
+    font-weight: bold;
+}
+
+.navbar input[type="search"]{
+    width: 300px;
+}
