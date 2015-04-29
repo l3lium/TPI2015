@@ -7,7 +7,6 @@
   Version:	0.1
   Description:  Script permettant de définir quel include a utiliser dépendamment de l'utilisateur
  */
-
 require_once 'specific_funtions.php';
 
 function getHeaderHtml($pageName)
