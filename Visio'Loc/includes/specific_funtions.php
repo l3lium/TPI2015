@@ -9,7 +9,7 @@
  */
 
 session_start();
-require_once 'crud_User.php';
+require_once 'constantes.php';
 //require_once 'crud_Animal.php';
 
 /* * isAdmin
