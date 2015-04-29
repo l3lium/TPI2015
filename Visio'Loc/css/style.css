@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 28 avr. 2015, 13:45:04
     Author     : oliveiras_info
 */
-.btn, .form-control{
+.btn, .form-control, alert{
     border-radius: 0px;
 }
 
@@ -17,6 +17,7 @@ nav {
 
 .container {
     margin-top: 20px;
+    
 }
 
 .navbar-brand{
@@ -30,6 +31,10 @@ nav {
 
 .navbar-form form-group{
     max-width: 400px;
+}
+
+.navbar-default .btn-link {
+    text-align: right;
 }
 
 .form-signin {
