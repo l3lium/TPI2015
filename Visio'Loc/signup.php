@@ -17,16 +17,16 @@ if (filter_input(INPUT_POST, 'signup')) {
     if (!$pseudo) {
         $valide = FALSE;
         $erreur = 'Le pseudo n\'est pas valide.';
-    } else if (!$email) {
+    } elseif (!$email) {
         $valide = FALSE;
         $erreur = 'L\'adresse email n\'est pas valide.';
-    } else if (getUserByEmail($email)) {
+    } elseif (getUserByEmail($email)) {
         $valide = FALSE;
         $erreur = 'Cette addresse email est déjà utilisée.';
-    } else if (!$pass) {
+    } elseif (!$pass) {
         $valide = FALSE;
         $erreur = 'Le mot de passe n\'est pas valide.';
-    } else if ($pass != $passConfirm) {
+    } elseif ($pass != $passConfirm) {
         $valide = FALSE;
         $erreur = 'Les mots de passes ne sont pas identiques.';
     }
@@ -62,12 +62,12 @@ and open the template in the editor.
                     <!-- CONTAINER LOGIN -->
                     <form class="form-signin" method="post" action="">
 
-                        <label class="">Pseudo:</label><input class="form-control" name="username" type="text" value="<?php
+                        <label class="">Pseudo :</label><input class="form-control" name="username" type="text" value="<?php
                         if (isset($valide) && !$valide) {
                             echo $pseudo;
                         }
                         ?>" placeholder="ex : ''Johndoe''"/><br/>
-                        <label>Email:</label><input class="form-control" name="email" type="text" value="<?php
+                        <label>Email :</label><input class="form-control" name="email" type="text" value="<?php
                         if (isset($valide) && !$valide) {
                             echo $email;
                         }
