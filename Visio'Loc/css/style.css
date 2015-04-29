@@ -24,6 +24,16 @@ nav {
     font-weight: bold;
 }
 
-.navbar input[type="search"]{
+.navbar-form input[type="search"]{
     width: 300px;
+}
+
+.navbar-form form-group{
+    max-width: 400px;
+}
+
+.form-signin {
+    max-width: 550px;
+    padding: 15px;
+    margin: 0 auto;
 }
