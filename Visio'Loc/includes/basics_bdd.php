@@ -1,9 +1,9 @@
 <?php
 /*
 ======Basic Bdd=======
-Auteur: 	Oliveira Stéphane & Seemuller Julien
+Auteur: 	Oliveira Stéphane
 Classe: 	I.IN-P4B
-Date:		18/11/2014
+Date:		29/04/2015
 Version:	0.3
 Description:    Script contenant les fonctions basiques relative à la base de donnée
                     - connexion base de donnée (PDO)

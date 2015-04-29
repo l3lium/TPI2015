@@ -1,9 +1,9 @@
 <?php
 /*
-======Crud Animal=======
-Auteur: 	Oliveira Stéphane & Seemuller Julien
+======Crud User=======
+Auteur: 	Oliveira Stéphane
 Classe: 	I.IN-P4B
-Date:		25/11/2014
+Date:		29/04/2015
 Version:	1.0
 Description:    Script contenant les fonctions en relation avec le 
                 l'identification et le crud user (create, read, update, delete)
