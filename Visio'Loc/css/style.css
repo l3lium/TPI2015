@@ -17,7 +17,7 @@ nav {
 
 .container {
     margin-top: 20px;
-    
+
 }
 
 .navbar-brand{
@@ -25,12 +25,19 @@ nav {
     font-weight: bold;
 }
 
-.navbar-form input[type="search"]{
+.navbar-form .input-group>.form-control {
     width: 300px;
 }
 
-.navbar-form form-group{
-    max-width: 400px;
+@media only screen and (max-width: 767px) {
+    .navbar-form .input-group>.form-control {
+        width: 100%;
+    }
+}
+
+.navbar-form .search-bar{
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .navbar-default .btn-link {

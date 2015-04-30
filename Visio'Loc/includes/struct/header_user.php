@@ -19,19 +19,21 @@
                 </ul>
                 <!-- Recherche-->
                 <form role="search" class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input class="form-control search-bar" type="search" placeholder="Rechercher">
-                        <button class="btn btn-success" type="submit" id="searchsubmit" value="search"><span class="glyphicon glyphicon-search"></span></button>
+                    <div class="input-group search-bar">
+                        <input class="form-control" type="search" placeholder="Rechercher">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit" id="searchsubmit" value="search"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
                     </div>
                 </form>
                 <!-- Enregistrement, Connnexion -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username'];?> <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a class="btn btn-link" href="">Mon compte <span class="glyphicon glyphicon-cog"></span></a></li>
                             <li><a class="btn btn-link" href="">Ma vidéothèque <span class="glyphicon glyphicon-film"></span></a></li>
-                            <li><a class="btn btn-link" href="<?php echo ROOT_SITE;?>/logout.php">Se deconnecter <span class="glyphicon glyphicon-log-out"></span></a></li>
+                            <li><a class="btn btn-link" href="<?php echo ROOT_SITE; ?>/logout.php">Se deconnecter <span class="glyphicon glyphicon-log-out"></span></a></li>
                         </ul>
                     </li>
                 </ul>
