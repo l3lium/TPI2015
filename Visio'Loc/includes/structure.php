@@ -27,9 +27,5 @@ function getHeaderHtml($pageName)
 }
 
 function getHeader() {
-    //On affiche différents headers en fonction de la personne qui est connectée
-    //Si personne n'est connecté, on affiche un header donnant la possibilité de s'inscrire et de se logger.
-
-    
-    include 'struct/header_base.php';
+    include '/struct/header_base.php';
 }
