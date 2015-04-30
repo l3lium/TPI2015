@@ -108,6 +108,20 @@ function getAllFields($table){
     return $data;
 }
 
+function getAllFieldsCondition($table, $condition){
+    $dbc = connection();
+    $dbc->quote($table);
+    $dbc->quote($condition);
+    $req = "SELECT * FROM $table $condition";
+    
+    $requPrep = $dbc->prepare($req);
+    $requPrep->execute();
+    
+    $data= $requPrep->fetchAll(PDO::FETCH_OBJ);
+    $requPrep->closeCursor();
+    return $data;
+}
+
 /** getPaginationQuerry
  * Retourne la liste des enregistrement d'une page donnée en paramètre selon la 
  * requette egalement passée en parametre 
