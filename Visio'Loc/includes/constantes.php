@@ -14,7 +14,7 @@ DEFINE('DB_HOST', 'localhost');
 DEFINE('DB_NAME', 'visiolocbdd');
 
 DEFINE('ROOT_SITE', '/Visio\'Loc');
-DEFINE('NB_PAGINATION', 8);
+DEFINE('NB_PAGINATION', 20);
 DEFINE('CONTENT_UPLOAD', 'up-content/');
 DEFINE('SOUND_FOLDER', 'sound/animal/');
 DEFINE('IMG_FOLDER', 'img/animal/');
