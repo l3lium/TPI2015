@@ -1,8 +1,8 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1080" measuredH="756" mockupW="983" mockupH="734">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1080" measuredH="756" mockupW="983" mockupH="704">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="97" y="52" w="983" h="704" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Visio%27Loc%20-%20Connexion</text>
+        <text>Visio%27Loc%20-%20R%E9initialisation%20mot%20de%20passe</text>
       </controlProperties>
     </control>
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="37" zOrder="1" locked="false" isInGroup="-1">
@@ -28,16 +28,16 @@
     </control>
     <control controlID="26" controlTypeID="__group__" x="259" y="222" w="654" h="54" measuredW="654" measuredH="54" zOrder="5" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
-        <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="191" measuredH="28" zOrder="0" locked="false" isInGroup="26">
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="0" y="0" w="-1" h="-1" measuredW="262" measuredH="28" zOrder="0" locked="false" isInGroup="26">
           <controlProperties>
             <size>20</size>
-            <text>Connexion%20utilisateur</text>
+            <text>R%E9initialisation%20mot%20de%20passe</text>
           </controlProperties>
         </control>
         <control controlID="1" controlTypeID="com.balsamiq.mockups::HRule" x="0" y="44" w="654" h="-1" measuredW="100" measuredH="10" zOrder="1" locked="false" isInGroup="26"/>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="0" y="28" w="-1" h="-1" measuredW="405" measuredH="21" zOrder="2" locked="false" isInGroup="26">
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="0" y="28" w="-1" h="-1" measuredW="210" measuredH="21" zOrder="2" locked="false" isInGroup="26">
           <controlProperties>
-            <text>Connectez-vous%20sur%20Visio%27loc%20pour%20pouvoir%20acheter%20et%20louer%20des%20films</text>
+            <text>Veuillez%20saisir%20votre%20adresse%20e-mail.</text>
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
@@ -52,34 +52,12 @@
         <text>Adresse%20email%20%3A</text>
       </controlProperties>
     </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::TextInput" x="466" y="400" w="242" h="-1" measuredW="79" measuredH="26" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="466" y="461" w="244" h="34" measuredW="222" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <text/>
+        <text>Envoyer%20le%20nouveau%20mot%20de%20passe</text>
       </controlProperties>
     </control>
-    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="466" y="379" w="-1" h="-1" measuredW="81" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Mot%20de%20passe</text>
-      </controlProperties>
-    </control>
-    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="466" y="520" w="122" h="34" measuredW="103" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Se%20connecter</text>
-      </controlProperties>
-    </control>
-    <control controlID="49" controlTypeID="com.balsamiq.mockups::Button" x="588" y="520" w="122" h="34" measuredW="68" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Annuler</text>
-      </controlProperties>
-    </control>
-    <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="466" y="429" w="-1" h="-1" measuredW="131" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
-      <controlProperties>
-        <color>545684</color>
-        <text>Mot%20de%20passe%20oubli%E9%20%3F</text>
-        <underline>true</underline>
-      </controlProperties>
-    </control>
-    <control controlID="52" controlTypeID="__group__" x="466" y="450" w="243" h="59" measuredW="243" measuredH="59" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="52" controlTypeID="__group__" x="466" y="386" w="243" h="59" measuredW="243" measuredH="59" zOrder="9" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::TextArea" x="0" y="0" w="243" h="59" measuredW="200" measuredH="140" zOrder="0" locked="false" isInGroup="52">
           <controlProperties>
@@ -96,7 +74,7 @@
         </control>
       </groupChildrenDescriptors>
     </control>
-    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="778" y="154" w="-1" h="-1" measuredW="135" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="778" y="154" w="-1" h="-1" measuredW="135" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Connexion%20-%20inscription</text>
       </controlProperties>

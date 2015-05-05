@@ -5,7 +5,7 @@
         <text>Visio%27Loc%20-%20Accueil</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="35" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="37" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <size>32</size>
         <text>Visio%27loc</text>
@@ -16,11 +16,11 @@
         <text>recherche...</text>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="840" y="153" w="-1" h="-1" measuredW="73" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="830" y="154" w="-1" h="-1" measuredW="83" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <color>545684</color>
         <state>up</state>
-        <text>Username%20v</text>
+        <text>%22Username%22%20v</text>
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::MenuBar" x="383" y="149" w="-1" h="-1" measuredW="128" measuredH="29" zOrder="4" locked="false" isInGroup="-1">
@@ -129,7 +129,7 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::List" x="756" y="174" w="157" h="74" measuredW="100" measuredH="126" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::List" x="756" y="173" w="157" h="66" measuredW="100" measuredH="126" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>square</borderStyle>
         <selectedIndex>0</selectedIndex>

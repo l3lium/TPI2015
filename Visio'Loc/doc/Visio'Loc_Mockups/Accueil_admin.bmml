@@ -5,7 +5,7 @@
         <text>Visio%27Loc%20-%20Accueil</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="35" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="37" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <size>32</size>
         <text>Visio%27loc</text>
@@ -16,11 +16,11 @@
         <text>recherche...</text>
       </controlProperties>
     </control>
-    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="816" y="153" w="-1" h="-1" measuredW="97" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="732" y="154" w="-1" h="-1" measuredW="181" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <color>545684</color>
         <state>up</state>
-        <text>Administrateur%20v</text>
+        <text>Administrateur%20-%20%22Username%22%20v</text>
       </controlProperties>
     </control>
     <control controlID="7" controlTypeID="com.balsamiq.mockups::MenuBar" x="383" y="149" w="-1" h="-1" measuredW="128" measuredH="29" zOrder="4" locked="false" isInGroup="-1">
@@ -129,11 +129,11 @@
         <text/>
       </controlProperties>
     </control>
-    <control controlID="40" controlTypeID="com.balsamiq.mockups::List" x="756" y="172" w="157" h="92" measuredW="100" measuredH="126" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::List" x="756" y="172" w="157" h="68" measuredW="100" measuredH="126" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>square</borderStyle>
         <selectedIndex>0</selectedIndex>
-        <text>%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Mon%20compte%0A%20%20%20%20%20%20%20%20%20%20%20Ma%20Vid%E9oth%E8que%0A%20%20%20%20%20%20%20%20Administration%20film%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20D%E9connexion</text>
+        <text>%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Mon%20compte%0A%20%20%20%20%20%20%20%20%20Gestion%20des%20films%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20D%E9connexion</text>
       </controlProperties>
     </control>
   </controls>

@@ -5,7 +5,7 @@
         <text>Visio%27Loc%20-%20Accueil</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="35" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="37" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <size>32</size>
         <text>Visio%27loc</text>

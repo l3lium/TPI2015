@@ -1,11 +1,11 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1080" measuredH="756" mockupW="983" mockupH="704">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1080" measuredH="756" mockupW="983" mockupH="734">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="97" y="52" w="983" h="704" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Visio%27Loc%20-%20Inscription</text>
       </controlProperties>
     </control>
-    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="35" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="259" y="146" w="-1" h="-1" measuredW="116" measuredH="37" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <size>32</size>
         <text>Visio%27loc</text>
@@ -87,21 +87,32 @@
         <text>Confirmation%20mot%20de%20passe%20%3A</text>
       </controlProperties>
     </control>
-    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="467" y="547" w="122" h="34" measuredW="71" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="467" y="596" w="122" h="34" measuredW="71" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <text>S%27inscrir</text>
       </controlProperties>
     </control>
-    <control controlID="49" controlTypeID="com.balsamiq.mockups::Button" x="589" y="547" w="122" h="34" measuredW="68" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Button" x="589" y="596" w="122" h="34" measuredW="68" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Annuler</text>
       </controlProperties>
     </control>
-    <control controlID="50" controlTypeID="com.balsamiq.mockups::Label" x="467" y="518" w="-1" h="-1" measuredW="183" measuredH="21" zOrder="17" locked="false" isInGroup="-1">
-      <controlProperties>
-        <color>14706278</color>
-        <text>Une%20erreur%20est%20survenu%20%3A%20XXXX</text>
-      </controlProperties>
+    <control controlID="51" controlTypeID="__group__" x="467" y="521" w="243" h="59" measuredW="243" measuredH="59" zOrder="17" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::TextArea" x="0" y="0" w="243" h="59" measuredW="200" measuredH="140" zOrder="0" locked="false" isInGroup="51">
+          <controlProperties>
+            <borderColor>15374745</borderColor>
+            <color>15374745</color>
+            <text/>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="27" y="19" w="188" h="-1" measuredW="183" measuredH="21" zOrder="1" locked="false" isInGroup="51">
+          <controlProperties>
+            <color>13576743</color>
+            <text>Une%20erreur%20est%20survenu%20%3A%20XXXX</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
     </control>
   </controls>
 </mockup>
