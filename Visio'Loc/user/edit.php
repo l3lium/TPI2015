@@ -1,10 +1,31 @@
 <?php
 require_once '../includes/structure.php';
+require_once '../includes/crud_User.php';
 
-if (!isConnected()){
-    header('Location: ' . ROOT_SITE . '/index.php');
+//Redirection si le compte est en état temporaire
+redirectTempAccount();
+
+if (!isConnected()) {
+    goHome();
 }
 
+
+//Modification informations utilisateur
+if (filter_input(INPUT_POST, 'edit')) {
+    $msg = "";
+    $valide = true;
+    $username = filter_input(INPUT_POST, 'username');
+
+    if (!$username) {
+        $valide = FALSE;
+        $msg = 'Le nom d\'utilisateur n\'est pas valide.';
+    }
+
+    if ($valide && $username != $_SESSION["username"]) {
+        updateActualUsername($username);
+        $msg = "Votre nom d'utilisateur a été modifié";
+    }
+}
 ?>
 <!DOCTYPE html>
 <!--
@@ -13,7 +34,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <?php getHeaderHtml("Accueil"); ?>
+    <?php getHeaderHtml("Profil - " . $_SESSION["username"]); ?>
     <body>
         <?php
         getHeader();
@@ -21,39 +42,52 @@ and open the template in the editor.
         <!-- CONTAINER -->
         <div class="container">
             <div class="center-block">
-                <h2><span class="glyphicon glyphicon-user"></span> Mon compte - <?php echo $_SESSION["username"];?></h2>
-                <h5>Inscrivez-vous sur Visio'Loc pour pouvoir acheter et louer des films</h5><hr/>
-                <?php
-                if (isset($valide) && $valide) {
-                    header("refresh:5; url=" . ROOT_SITE . "/index.php");
-                    ?>
-                    <div class="alert alert-success" role="alert">
-                        <p>Votre inscription a été effectué avec succès. <i>Vous allez être redirigé vers l'accueil automatiquement.</i></p>
+                <h2><span class="glyphicon glyphicon-edit"></span> Mon compte - <?php echo $_SESSION["username"]; ?></h2>
+                <h5>Modifier vos informations personnelles</h5><hr/>
+                <form class="form form-edit" method="POST" action="">
+                    <div class="form-group">
+                        <label for="Username" class="col-sm-4 control-label">Nom d'utilisateur : </label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="username" value="<?php echo $_SESSION["username"]; ?>">
+                        </div>
                     </div>
-                <?php } else { ?>
-                    <!-- CONTAINER LOGIN -->
-                    <form class="form-signin" method="post" action="">
+                    <div class="form-group">
+                        <label for="Email" class="col-sm-4 control-label">Email : </label>
+                        <div class="col-sm-8">
+                            <p><?php echo $_SESSION["email"]; ?></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email" class="col-sm-4 control-label">Mot de passe : </label>
+                        <div class="col-sm-8">
+                            <a class="form-link" href="<?php echo ROOT_SITE . "/user/editPassword.php"; ?>">Modifier votre mot de passe</a>
+                        </div>
+                    </div>
+                    <?php if (isset($valide) && !empty($msg)) { ?>
+                        <div class="form-group col-sm-12">
+                            <?php
+                            if ($valide) {
+                                ?>
+                                <p class="alert alert-success" role="alert"><?php echo $msg; ?></p>
+                                <?php
+                            } else {
+                                ?>
+                                <p class="alert alert-danger" role="alert"><?php echo $msg; ?></p>
 
-                        <label class="">Pseudo :</label><input class="form-control" name="username" type="text" value="<?php
-                        if (isset($valide) && !$valide) {
-                            echo $pseudo;
-                        }
-                        ?>" placeholder="ex : ''Johndoe''"/><br/>
-                        <label>Email :</label><input class="form-control" name="email" type="text" value="<?php
-                        if (isset($valide) && !$valide) {
-                            echo $email;
-                        }
-                        ?>" placeholder="ex : ''john.doe@placeholder.com''"/><br/> 
-                        <label>Password :</label><input class="form-control" name="password" type="password"/><br/>
-                        <label>Password confirm :</label><input class="form-control" name="passwordConfirm" type="password"/><br/>
+                                <?php
+                            }
+                            ?>
+                        </div>
                         <?php
-                        if (isset($valide) && !$valide) {
-                            echo '<p class="alert alert-danger" role="alert">' . $erreur . '</p>';
-                        }
-                        ?>
-                        <!-- <input name="signup" class="btn btn-lg btn-primary btn-block" type="submit" value="S'inscrire"/>-->
-                    </form>
-                <?php } ?>
+                    }
+                    ?>
+                    <div class="form-group-btn">
+                        <div class="col-sm-offset-4 col-sm-5">
+                            <input name="edit" class="btn btn-primary" type="submit" value="Enregistrer les modifications"/>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </body>

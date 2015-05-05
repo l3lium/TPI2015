@@ -4,7 +4,7 @@ require_once './includes/structure.php';
 //require_once '../includes/struct.php';
 
 if (isConnected()) {
-    header('Location: ' . ROOT_SITE . '/index.php');
+    goHome();
 }
 
 if (filter_input(INPUT_POST, 'signup')) {
@@ -16,7 +16,7 @@ if (filter_input(INPUT_POST, 'signup')) {
 
     if (!$pseudo) {
         $valide = FALSE;
-        $erreur = 'Le pseudo n\'est pas valide.';
+        $erreur = 'Le nom d\'utilisateur n\'est pas valide.';
     } elseif (!$email) {
         $valide = FALSE;
         $erreur = 'L\'adresse email n\'est pas valide.';
@@ -32,7 +32,11 @@ if (filter_input(INPUT_POST, 'signup')) {
     }
 
     if ($valide) {
-        createUser($email, $pseudo, $pass);
+        $id = createUser($email, $pseudo, $pass);
+        if ($id == 0) {
+            $valide = FALSE;
+            $erreur = 'Une erreur est survenu lors de l\'inscription. Veuillez réessayer ulterieurement.';
+        }
     }
 }
 ?>
@@ -53,27 +57,27 @@ and open the template in the editor.
                 <h5>Inscrivez-vous sur Visio'Loc pour pouvoir acheter et louer des films</h5><hr/>
                 <?php
                 if (isset($valide) && $valide) {
-                    header("refresh:5; url=".ROOT_SITE."/index.php");
+                    header("refresh:5; url=" . ROOT_SITE . "/signin.php");
                     ?>
                     <div class="alert alert-success" role="alert">
-                        <p>Votre inscription a été effectué avec succès. <i>Vous allez être redirigé vers l'accueil automatiquement.</i></p>
+                        <p>Votre inscription a été effectué avec succès. <i>Vous allez être redirigé sur la page de connexion automatiquement.</i></p>
                     </div>
                 <?php } else { ?>
                     <!-- CONTAINER LOGIN -->
-                    <form class="form-signin" method="post" action="">
+                    <form class="form form-signin" method="post" action="<?php echo ROOT_SITE . "/signup.php"; ?>">
 
-                        <label class="">Pseudo :</label><input class="form-control" name="username" type="text" value="<?php
+                        <label class="">Nom utilisateur :</label><input class="form-control" name="username" type="text" value="<?php
                         if (isset($valide) && !$valide) {
                             echo $pseudo;
                         }
-                        ?>" placeholder="ex : ''Johndoe''"/><br/>
-                        <label>Email :</label><input class="form-control" name="email" type="text" value="<?php
+                        ?>" placeholder="ex : ''Johndoe''"/>
+                        <label>Adresse email :</label><input class="form-control" name="email" type="text" value="<?php
                         if (isset($valide) && !$valide) {
                             echo $email;
                         }
-                        ?>" placeholder="ex : ''john.doe@placeholder.com''"/><br/> 
-                        <label>Password :</label><input class="form-control" name="password" type="password"/><br/>
-                        <label>Password confirm :</label><input class="form-control" name="passwordConfirm" type="password"/><br/>
+                        ?>" placeholder="ex : ''john.doe@placeholder.com''"/> 
+                        <label>Mot de passe :</label><input class="form-control" name="password" type="password"/>
+                        <label>Confirmation mot de passe :</label><input class="form-control" name="passwordConfirm" type="password"/>
                         <?php
                         if (isset($valide) && !$valide) {
                             echo '<p class="alert alert-danger" role="alert">' . $erreur . '</p>';

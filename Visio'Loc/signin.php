@@ -1,10 +1,9 @@
 <?php
 require_once './includes/crud_User.php';
 require_once './includes/structure.php';
-//require_once '../includes/struct.php';
 
 if (isConnected()) {
-    header('Location: ' . ROOT_SITE . '/index.php');
+    goHome();
 }
 
 //Connexion utilisateur
@@ -13,7 +12,7 @@ if (filter_input(INPUT_POST, 'login')) {
     $valide = true;
     $email = filter_input(INPUT_POST, 'email');
     $pass = filter_input(INPUT_POST, 'password');
-
+    
     if (!$email) {
         $valide = FALSE;
         $erreur = 'L\'adresse email n\'est pas valide.';
@@ -23,7 +22,7 @@ if (filter_input(INPUT_POST, 'login')) {
     }
     if ($valide) {
         if (userConnect($email, $pass)) {
-            header('Location: ' . ROOT_SITE . '/index.php');
+            goHome();
         } else {
             $valide = FALSE;
             $erreur = "L'addresse email ou le mot de passe est incorrect";
@@ -38,7 +37,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <?php getHeaderHtml("Inscription"); ?>
+    <?php getHeaderHtml("Connexion"); ?>
     <body>
         <?php getHeader(); ?>
         <!-- CONTAINER -->
@@ -47,18 +46,25 @@ and open the template in the editor.
                 <h2><span class="glyphicon glyphicon-log-out"></span> Connexion utilisateur</h2>
                 <h5>Connectez-vous sur Visio'Loc pour pouvoir acheter et louer des films</h5><hr/>
                 <!-- CONTAINER LOGIN -->
-                <form class="form-signin" method="post" action="">
-                    <label>Email :</label>
-                    <input class="form-control" name="email" type="text" value="<?php if (isset($valide) && !$valide) {
-            echo $email;
-        } ?>" placeholder="ex : ''john.doe@placeholder.com''"/><br/> 
-                    <label>Password :</label><input class="form-control" name="password" type="password"/><br/>
+                <form class="form form-signin" method="post" action="<?php echo ROOT_SITE."/signin.php";?>">
+                    <label>Adresse email :</label>
+                    <input class="form-control" name="email" type="text" value="<?php
+                    if (isset($valide) && !$valide) {
+                        echo $email;
+                    }
+                    ?>" placeholder="ex : ''john.doe@placeholder.com''"/>
+                    <label>Mot de passe :</label><input class="form-control" name="password" type="password"/>
+                    <a class="form-link" href="<?php echo ROOT_SITE."/user/recovery.php"; ?>">Mot de passe oublié ?</a>
                     <?php
                     if (isset($valide) && !$valide) {
                         echo '<p class="alert alert-danger" role="alert">' . $erreur . '</p>';
                     }
                     ?>
-                    <input name="login" class="btn btn-lg btn-primary btn-block" type="submit" value="Se connecter"/>
+                    <div class="form-group-btn">
+                        <input name="login" class="btn btn-lg btn-primary col-sm-6" type="submit" value="Se connecter"/>
+                        <input name="reset" class="btn btn-lg btn-primary col-sm-6" type="reset" value="Annuler"/>
+                    </div>
+                    
                 </form>
             </div>
         </div>

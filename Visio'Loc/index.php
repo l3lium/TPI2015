@@ -1,5 +1,8 @@
-<?php 
-    require_once '/includes/structure.php';
+<?php
+require_once '/includes/structure.php';
+
+//Redirection si le compte est en état temporaire
+redirectTempAccount();
 ?>
 <!DOCTYPE html>
 <!--
