@@ -24,12 +24,12 @@ $table = 'users';
 function createUser($email, $username, $password){
     global $table;
     //Hashage du mot de passe
-    $password=hashPerso($password, $username);
+    $password=hashPerso($password, $email);
     
     $dbc = connection();
     $dbc->quote($table);
     
-    $req = "INSERT INTO $table (email, username, password) VALUES (:email, :username, :password, 1)";
+    $req = "INSERT INTO $table (email, username, password) VALUES (:email, :username, :password)";
     $requPrep = $dbc->prepare($req); // on prépare notre requête
     $requPrep->bindParam(':email', $email, PDO::PARAM_STR);
     $requPrep->bindParam(':username', $username, PDO::PARAM_STR);
@@ -64,10 +64,11 @@ function updateActualUsername($newUsername)
  * Met à jour le mot de passe de l'utilisateur connecté
  * @param string $password
  */
-function updateActualUserPassword($password)
+function updateActualUserPassword($password, $temp = false)
 {
     $id = $_SESSION["id"];
-    updatePasswordById($id, $password);
+    updatePasswordById($id, $password, $temp);
+    setSessionUser(getUserById($id));
 }
 
 /** updateUsernameById
@@ -95,14 +96,15 @@ function updateUsernameById($id, $newUsername){
  * @param int $id
  * @param string $newPassword
  */
-function updatePasswordById($id, $newPassword){
+function updatePasswordById($id, $newPassword, $temp = false){
     global $table;
     
     $dbc = connection();
     $dbc->quote($table);
-    $req = "UPDATE $table SET password = :password WHERE id = :id";
+    $req = "UPDATE $table SET password = :password, temporary = :temp WHERE id = :id";
     $requPrep = $dbc->prepare($req); // on prépare notre requête
     $requPrep->bindParam(':password', $newPassword, PDO::PARAM_STR);
+    $requPrep->bindParam(':temp', $temp, PDO::PARAM_STR);
     $requPrep->bindParam(':id', $id, PDO::PARAM_STR);
     $requPrep->execute();
     $requPrep->closeCursor();
@@ -209,6 +211,7 @@ function setSessionUser($user)
         $_SESSION['id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
+        $_SESSION['temporary'] = $user->temporary;
         $_SESSION['usertype'] = $user->userType;
     }
 }
