@@ -22,7 +22,7 @@ function getActorById(){
     
 }
 
-function getUpdateActor(){
+function updateActor(){
     
 }
 
