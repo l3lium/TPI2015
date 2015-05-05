@@ -15,9 +15,11 @@ DEFINE('DB_NAME', 'visiolocbdd');
 
 DEFINE('ROOT_SITE', '/Visio\'Loc');
 DEFINE('NB_PAGINATION', 20);
-DEFINE('CONTENT_UPLOAD', 'up-content/');
+DEFINE('MAX_SIZE_IMG', 4194304);//4 Mo 2^20*4
+DEFINE('MAX_SIZE_VIDEO', 10737418240);//10 Go 2^30*10
+DEFINE('CONTENT_UPLOAD', '/up-content');
+DEFINE('IMG_FOLDER', ROOT_SITE.CONTENT_UPLOAD.'/img/movies/');
 DEFINE('SOUND_FOLDER', 'sound/animal/');
-DEFINE('IMG_FOLDER', 'img/animal/');
 
 DEFINE('ALLOWED_IMAGE_TYPES', serialize( array("image/png", "image/jpeg", "image/gif")));
-DEFINE('ALLOWED_SOUND_TYPES', serialize( array("audio/wav", "audio/mp3")));
+DEFINE('ALLOWED_VIDEO_TYPES', serialize( array("video/mp4", "video/webm")));
