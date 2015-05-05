@@ -44,8 +44,30 @@ nav {
     text-align: right;
 }
 
-.form-signin {
+.form{
     max-width: 550px;
     padding: 15px;
     margin: 0 auto;
+}
+
+.form-edit{
+    max-width: 650px;
+}
+
+
+
+.form-group-btn{
+    width: 100%;
+    margin-top: 15px;
+}
+.form input, .form textarea{
+   margin-bottom: 20px;
+   max-width: 100%;
+}
+.form-addMovie textarea{
+    width: 100%;    
+}
+
+.progress{
+    width: 100%;    
 }
