@@ -3,8 +3,8 @@
   ======Specific functions======
   Auteur: 	Oliveira Stéphane
   Classe: 	I.IN-P4B
-  Date:		30/04/2015
-  Version:	0.3
+  Date:		06/05/2015
+  Version:	0.4
   Description:    Script regroupant les fonctions spécifiques au site web et la base de donnée
  */
 
@@ -51,8 +51,8 @@ function checkImageType($fileType) {
     return in_array($fileType, unserialize(ALLOWED_IMAGE_TYPES));
 }
 
-function checkSoundType($fileType) {
-    return in_array($fileType, unserialize(ALLOWED_SOUND_TYPES));
+function checkVideoType($fileType) {
+    return in_array($fileType, unserialize(ALLOWED_VIDEO_TYPES));
 }
 
 /** goHome
