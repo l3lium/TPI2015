@@ -188,6 +188,25 @@ function deleteFieldById($id, $table){
     $requPrep->closeCursor();
 }
 
+/** deleteFieldById
+ * Cette fonction supprime un enregistrement de la table donnée en paramètre grâce à 
+ * l'id également donnée en paramètre
+ * @param Integer $id
+ * @param String $table
+ */
+function deleteFieldCondition($condition, $table){
+    $dbc= connection();
+    $dbc->quote($table);
+    $dbc->quote($condition);
+    $req = "DELETE FROM $table $condition";
+
+    $requPrep = $dbc->prepare($req); // on prépare notre requête
+    $requPrep->execute();
+    $data= $requPrep->fetchAll(PDO::FETCH_OBJ);
+    $requPrep->closeCursor();
+    return $data;
+}
+
 
  /*=========================WORK IN PROGRESS============================
 /** updateFieldById
