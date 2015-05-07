@@ -11,7 +11,7 @@ if (isConnected()) {
 if (filter_input(INPUT_POST, 'recovery')) {
     $msg = "";
     $valide = true;
-    $email = filter_input(INPUT_POST, 'email');
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
     if (!$email) {
         $valide = FALSE;
