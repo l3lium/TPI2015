@@ -11,13 +11,15 @@
 
 require_once 'basics_bdd.php';
 require_once 'crud_Actors.php';
+require_once 'crud_keywords.php';
 
-$table = 'movies';
+$table_movies = 'movies';
+$table_keywords = 'keywords';
 
-function addFilm($title, $date, $img, $video, $synopsis) {
-    global $table;
+function addMovie($title, $date, $img, $video, $synopsis) {
+    global $table_movies;
     $dbc = connection();
-    $dbc->quote($table);
+    $dbc->quote($table_movies);
     $req = "INSERT INTO movies (title, date, imgSrc, videoSrc, synopsis) VALUES (:title, :date, :img, :video, :synopsis)";
     $requPrep = $dbc->prepare($req); // on prépare notre requête
     $requPrep->bindParam(':title', $title, PDO::PARAM_STR);
@@ -30,28 +32,45 @@ function addFilm($title, $date, $img, $video, $synopsis) {
     return $dbc->lastInsertId();
 }
 
-function searchFilm($key) {
-    global $table;
+function updateMovie($id, $title, $date, $img, $video, $synopsis){
+    global $table_movies;
+    $dbc = connection();
+    $dbc->quote($table_movies);
+    $req = "UPDATE $table_movies SET title=:title, date=:date, imgSrc=:img, videoSrc=:video, synopsis=:synopsis "
+            . "WHERE id = :id";
+    $requPrep = $dbc->prepare($req); // on prépare notre requête
+    $requPrep->bindParam(':title', $title, PDO::PARAM_STR);
+    $requPrep->bindParam(':date', $date);
+    $requPrep->bindParam(':img', $img, PDO::PARAM_STR);
+    $requPrep->bindParam(':video', $video, PDO::PARAM_STR);
+    $requPrep->bindParam(':synopsis', $synopsis, PDO::PARAM_BOOL);
+    $requPrep->bindParam(':id', $id, PDO::PARAM_BOOL);
+    $requPrep->execute();
+    $requPrep->closeCursor();
+}
+
+function searchMovies($key) {
+    global $table_movies;
 
     $condition = "WHERE title like '%$key%' OR synopsis like '%$key%'";
-    return getAllFieldsCondition($table, $condition);
+    return getAllFieldsCondition($table_movies, $condition);
 }
 
-function getFilmById($id) {
-    global $table;
-    return getFieldById($id, $table);
+function getMovieById($id) {
+    global $table_movies;
+    return getFieldById($id, $table_movies);
 }
 
-function getAllFilms() {
-    global $table;
+function getAllMovies() {
+    global $table_movies;
 
-    return getAllFields($table);
+    return getAllFields($table_movies);
 }
 
-function getPageFilms($page) {
-    global $table;
+function getPageMovie($page) {
+    global $table_movies;
 
-    $req = "SELECT * FROM $table";
+    $req = "SELECT * FROM $table_movies";
 
     return getPaginationQuerry($page, NB_PAGINATION, $req);
 }
