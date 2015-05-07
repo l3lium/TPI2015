@@ -1,10 +1,11 @@
 <?php
+
 /*
   ======Structure PHP======
   Auteur: 	Oliveira Stéphane
   Classe: 	I.IN-P4B
-  Date:		29/04/2015
-  Version:	0.1
+  Date:		06/05/2015
+  Version:	0.3
   Description:  Script permettant de définir quel include a utiliser dépendamment de l'utilisateur
  */
 require_once 'specific_funtions.php';
@@ -28,4 +29,34 @@ function getHeaderHtml($pageName) {
 
 function getHeader() {
     include '/struct/header_base.php';
+}
+
+function getSelectKeywords($id = null) {
+    echo "<select multiple name=\"keywords[]\" class=\"form-control\">";
+    foreach (getAllKeywords() as $value) {
+        if (in_array($value->idKeyword, $id))
+            echo "<option selected value=\"$value->idKeyword\">$value->label</option>";
+        else
+            echo "<option value=\"$value->idKeyword\">$value->label</option>";
+    }
+    echo "</select>";
+}
+
+function getSelectActors($id = NULL) {
+    getSelectPerson(getAllActors(), "actors", $id);
+}
+
+function getSelectCreators($id = null) {
+    getSelectPerson(getAllCreators(), "creators", $id);
+}
+
+function getSelectPerson($array, $name, $id = null) {
+    echo "<select multiple name=\"".$name."[]\" class=\"form-control\">";
+    foreach ($array as $value) {
+        if (in_array($value->id, $id))
+            echo "<option selected value=\"$value->id\">$value->firstName $value->lastName</option>";
+        else
+            echo "<option value=\"$value->id\">$value->firstName $value->lastName</option>";
+    }
+    echo "</select>";
 }
