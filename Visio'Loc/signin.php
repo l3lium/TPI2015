@@ -10,7 +10,7 @@ if (isConnected()) {
 if (filter_input(INPUT_POST, 'login')) {
     $erreur = "";
     $valide = true;
-    $email = filter_input(INPUT_POST, 'email');
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $pass = filter_input(INPUT_POST, 'password');
     
     if (!$email) {
@@ -20,6 +20,7 @@ if (filter_input(INPUT_POST, 'login')) {
         $valide = FALSE;
         $erreur = 'Veuillez rentrer un mot de passe.';
     }
+    
     if ($valide) {
         if (userConnect($email, $pass)) {
             goHome();
