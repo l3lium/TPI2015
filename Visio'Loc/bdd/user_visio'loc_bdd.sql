@@ -1,0 +1,3 @@
+GRANT USAGE ON *.* TO 'visioloc_user'@'localhost' IDENTIFIED BY PASSWORD '*0438A33F4048BEAFC379BFCA2913B23A3C9BD83D';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON `visiolocbdd`.* TO 'visioloc_user'@'localhost';

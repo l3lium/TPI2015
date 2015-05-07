@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 01 Mai 2015 à 18:23
+-- Généré le :  Jeu 07 Mai 2015 à 10:49
 -- Version du serveur :  5.6.15-log
--- Version de PHP :  5.4.14
+-- Version de PHP :  5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -58,11 +58,11 @@ CREATE TABLE IF NOT EXISTS `creators` (
 
 DROP TABLE IF EXISTS `keywords`;
 CREATE TABLE IF NOT EXISTS `keywords` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idKeyword` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`idKeyword`),
   UNIQUE KEY `label` (`label`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `videoSrc` varchar(255) NOT NULL,
   `synopsis` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=43 ;
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userType` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 -- --------------------------------------------------------
 
