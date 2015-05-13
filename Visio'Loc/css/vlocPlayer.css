@@ -1,0 +1,17 @@
+/* 
+    Created on : 12 mai 2015, 10:24:38
+    Author     : oliveiras_info
+*/
+
+#vloc-video {
+    max-width: 100%;
+}
+
+#vloc-chapter-group{
+    display: inline;
+}
+
+#vloc-progress-bar{
+    display: inline;
+    /*max-width: 100%;*/
+}

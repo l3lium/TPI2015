@@ -10,16 +10,18 @@ require_once '../includes/crud_Movies.php';
 //debug(getAllFilms());
 
 echo "id 1 :";
-debug(getFilmById(1));
+debug(getMovieById(1));
 
 //debug(addFilm("dadadada", "2015-12-12", "img", "video", "je suis un synopsis"));
 
 echo "recherche 'saas' :";
-debug(searchFilm("saas"));
+debug(searchMovies("saas"));
 
-debug(getAllActorsByFilmId(1));
-debug(getAllActorsByFilmId(2));
+debug(getActorsByMovieId(1));
+debug(getActorsByMovieId(2));
 
-debug(getAllCreatorsByFilmId(1));
-debug();
+debug(getCreatorsByMovieId(1));
+debug(updateMovie(1, "test Update", "2015-2-2", "test Update imgsrc", "test Update video src", "test Update synopsis"));
 
+debug(addSubtitle(1, "fr", "test"));
+updateSub(1, "fr", "en", "testupdate");

@@ -7,17 +7,18 @@ and open the template in the editor.
     Created on : 28 avr. 2015, 13:45:04
     Author     : oliveiras_info
 */
-.btn, .form-control, alert{
+.btn, .form-control, alert, .modal-content, .pagination ul{
     border-radius: 0px;
-}
-
-nav {
-    height: auto;
 }
 
 .container {
     margin-top: 20px;
+}
 
+/*============HEADER STYLE==============*/
+/*GLOBAL HEADER STYLE*/
+nav {
+    height: auto;
 }
 
 .navbar-brand{
@@ -25,6 +26,7 @@ nav {
     font-weight: bold;
 }
 
+/*HEADER - SEARCH_BAR STYLE*/
 .navbar-form .input-group>.form-control {
     width: 300px;
 }
@@ -40,34 +42,113 @@ nav {
     margin-right: 8px;
 }
 
+/*HEADER - MENU_NAV STYLE*/
 .navbar-default .btn-link {
     text-align: right;
 }
 
+/*===========FORM STYLES===========*/
 .form{
     max-width: 550px;
     padding: 15px;
     margin: 0 auto;
 }
 
-.form-edit{
-    max-width: 650px;
-}
-
-
-
 .form-group-btn{
     width: 100%;
     margin-top: 15px;
 }
-.form input, .form textarea{
-   margin-bottom: 20px;
-   max-width: 100%;
+.form input, .form textarea, .form select{
+    margin-bottom: 20px;
+    max-width: 100%;
 }
-.form-addMovie textarea{
-    width: 100%;    
+
+.form select[multiple]{
+    max-height: 300px;
 }
 
 .progress{
     width: 100%;    
+}
+
+/*FORM PROFILE STYLE*/
+.form-edit{
+    max-width: 650px;
+}
+
+/*POSTER THUMBNAIL*/
+.thumbnail-movie {
+    padding: 25px;
+}
+
+.thumbnail-movie .item-movie img{
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+/*DETAIL PAGE*/
+.detail-poster{
+    width: 100%;
+}
+
+.container-detail{
+    padding: 20px;
+    /*max-width: 900px;*/
+}
+
+.detail{
+    font-size: 14pt;
+    text-align: justify;
+}
+
+.detail dd{
+    width: 100%;
+}
+
+.detail dt, .detail dd{
+    margin-bottom: 10px; 
+}
+
+.container-buy-buttons{
+    margin-top: 15px;
+}
+
+/*ITEM SEARCH*/
+.container-search{
+    max-width: 650px;
+}
+
+.container-search .media-object{
+    max-width: 150px;
+}
+
+.media-body {
+    text-align: justify;
+}
+
+footer{
+    margin-top: 30px;
+    padding-top: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid transparent;
+    border-color: #e7e7e7;
+}
+
+.pagination{
+    margin: auto;
+}
+
+.table-subs{
+    max-width: 500px;
+    margin: auto;
+}
+
+.container-videotheque{
+    /*max-width: 700px;*/
+}
+
+.item-grey{
+    filter: grescale(90%);
+    -webkit-filter: grayscale(90%);
+    -moz-filter: grayscale(90%);
 }

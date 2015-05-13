@@ -53,7 +53,7 @@ if (filter_input(INPUT_POST, 'addMovie')) {
         if ($id == 0) {
             $valide = FALSE;
             $erreur = 'Une erreur est survenu lors de l\'ajout du film. Veuillez réessayer ulterieurement.';
-        }  else {
+        } else {
             addCreatorsMovie($id, $creators);
             addActorsMovie($id, $actors);
             addKeywordsMovie($id, $keywords);
@@ -71,7 +71,7 @@ and open the template in the editor.
     <?php getHeaderHtml("Ajout de film"); ?>
     <body>
         <?php
-        getHeader();
+        getFullHeader();
         ?>
         <!-- CONTAINER -->
         <div class="container">
@@ -80,7 +80,7 @@ and open the template in the editor.
                 <h5>Entrer les informations du films et ajouter-le</h5><hr/>
                 <?php
                 if (isset($valide) && $valide) {
-                    header("refresh:5; url=" . ROOT_SITE . "/movie/fiche.php?id=$id");
+                    header("refresh:5; url=" . ROOT_SITE . "movie/detail.php?id=$id");
                     ?>
                     <div class="alert alert-success" role="alert">
                         <p>Le film a été ajouter dans la base de données. <i>Vous allez être redirigé sur la fiche du film automatiquement.</i></p>
@@ -88,21 +88,23 @@ and open the template in the editor.
                 <?php } else {
                     ?>
                     <!-- CONTAINER ADD MOVIE -->
-                    <form id="form-add-movie"class="form" enctype="multipart/form-data" method="post" action="<?php echo ROOT_SITE . "/movie/add.php"; ?>">
+                    <form id="form-add-movie"class="form" enctype="multipart/form-data" method="post" action="<?php echo ROOT_SITE . "movie/add.php"; ?>">
                         <?php
                         if (isset($valide) && !$valide) {
                             echo '<p class="alert alert-danger" role="alert">' . $erreur . '</p>';
                         }
                         ?>
                         <label class="">Titre du film :</label>
+                        <button id="input-help" type="button" class="btn btn-default btn-xs pull-right">aide à la saisie</button>
                         <input class="form-control" name="title" type="text" value="<?php echo (isset($valide) && !$valide) ? $title : ''; ?>" placeholder="ex : ''Titanic''"/>
+                        <p id="input-help-msg"></p>
                         <label class="">Date de sortie :</label>
                         <input class="form-control" name="date" type="date" value="<?php echo (isset($valide) && !$valide) ? $date : ''; ?>" placeholder="ex : ''29/01/1998''"/>
                         <label for="comment">Synopsis:</label>
                         <textarea id="2" class="form-control" rows="5" name="synopsis"><?php echo (isset($valide) && !$valide && isset($synopsis)) ? $synopsis : ''; ?></textarea>
                         <div class="form-group-upload well">
                             <?php if (isset($valide) && !$valide && $srcPoster) { ?>
-                            <label>Le poster a été envoyé</label></br>
+                                <label>Le poster a été envoyé</label></br>
                                 <input type="hidden" name="srcPoster" value="<?php echo $srcPoster; ?>">
                                 <?php
                             } else {
@@ -113,7 +115,7 @@ and open the template in the editor.
                                         <input id="input-poster" type="file" name="poster" accept="image/*">
                                     </div>
                                     <div id="upload-poster" class="form-group hidden">
-                                        <button data-url-upload="<?php echo ROOT_SITE . "/up-content/uploadPoster.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
+                                        <button data-url-upload="<?php echo ROOT_SITE . "up-content/uploadPoster.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
                                     </div>
                                     <div class="progress hidden">
                                         <div id="progress-bar-poster" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0"
@@ -127,7 +129,7 @@ and open the template in the editor.
                             if (isset($valide) && !$valide && $srcVideo) {
                                 ?>
                                 <label>La vidéo a été envoyée</label>
-                                <input type="hidden" name="srcVideo" value="<?php echo $srcVideo; ?>">";
+                                <input type="hidden" name="srcVideo" value="<?php echo $srcVideo; ?>">
                                 <?php
                             } else {
                                 ?>
@@ -137,7 +139,7 @@ and open the template in the editor.
                                         <input id="input-video" type="file" name="video" accept="video/mp4,video/webm">
                                     </div>
                                     <div id="upload-video" class="form-group hidden">
-                                        <button data-url-upload="<?php echo ROOT_SITE . "/up-content/uploadVideo.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
+                                        <button data-url-upload="<?php echo ROOT_SITE . "up-content/uploadVideo.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
                                     </div>
                                     <div class="progress hidden">
                                         <div id="progress-bar-video" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0"
@@ -176,5 +178,6 @@ and open the template in the editor.
                 <?php } ?>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>

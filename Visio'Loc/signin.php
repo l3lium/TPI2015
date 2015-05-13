@@ -40,14 +40,14 @@ and open the template in the editor.
 <html>
     <?php getHeaderHtml("Connexion"); ?>
     <body>
-        <?php getHeader(); ?>
+        <?php getFullHeader(); ?>
         <!-- CONTAINER -->
         <div class="container">
             <div class="center-block">
                 <h2><span class="glyphicon glyphicon-log-out"></span> Connexion utilisateur</h2>
                 <h5>Connectez-vous sur Visio'Loc pour pouvoir acheter et louer des films</h5><hr/>
                 <!-- CONTAINER LOGIN -->
-                <form class="form form-signin" method="post" action="<?php echo ROOT_SITE."/signin.php";?>">
+                <form class="form form-signin" method="post" action="<?php echo ROOT_SITE."signin.php";?>">
                     <label>Adresse email :</label>
                     <input class="form-control" name="email" type="text" value="<?php
                     if (isset($valide) && !$valide) {
@@ -55,7 +55,7 @@ and open the template in the editor.
                     }
                     ?>" placeholder="ex : ''john.doe@placeholder.com''"/>
                     <label>Mot de passe :</label><input class="form-control" name="password" type="password"/>
-                    <a class="form-link" href="<?php echo ROOT_SITE."/user/recovery.php"; ?>">Mot de passe oublié ?</a>
+                    <a class="form-link" href="<?php echo ROOT_SITE."user/recovery.php"; ?>">Mot de passe oublié ?</a>
                     <?php
                     if (isset($valide) && !$valide) {
                         echo '<p class="alert alert-danger" role="alert">' . $erreur . '</p>';
@@ -69,5 +69,6 @@ and open the template in the editor.
                 </form>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>

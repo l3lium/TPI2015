@@ -20,7 +20,7 @@ if (filter_input(INPUT_POST, 'recovery')) {
 
     if ($user = getUserByEmail($email)) {
         $pass = generatePassword(10);
-        updatePasswordById($user->id, hashPerso($pass, $email), true);
+        updatePasswordById($user->id, hashPerso($pass, $user->id), true);
         $msg = getMsgTempPass($user->username, $pass);
         //mail($email, "Modification mot de passe", $msg);
     } else {
@@ -39,7 +39,7 @@ and open the template in the editor.
     <?php getHeaderHtml("Réinitialiser mot de passe"); ?>
     <body>
         <?php
-        getHeader();
+        getFullHeader();
         ?>
         <!-- CONTAINER -->
         <div class="container">
@@ -71,5 +71,6 @@ and open the template in the editor.
                 </form>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>

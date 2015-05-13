@@ -1,5 +1,4 @@
 <?php
-
 require_once '../includes/specific_funtions.php';
 
 if (isset($_FILES["poster"]) && $_FILES["poster"]["error"] == UPLOAD_ERR_OK) {
@@ -20,12 +19,12 @@ if (isset($_FILES["poster"]) && $_FILES["poster"]["error"] == UPLOAD_ERR_OK) {
 
     $file = $_FILES['poster']['name'];
     $imgFilename = uniqid($_SESSION['id']) . '.' . pathinfo($file, PATHINFO_EXTENSION);
-    $imgPath = realpath(".") .IMG_FOLDER. $imgFilename;
+    $imgPath = realpath(".") . "/" . IMG_FOLDER . $imgFilename;
     
     if (move_uploaded_file($_FILES['poster']['tmp_name'], $imgPath)) {
         // do other stuff 
         echo '<p class="alert alert-success">Le fichier a été upload.</p>';
-        echo "<input type=\"hidden\" name=\"srcPoster\" value=\"" . ROOT_SITE.CONTENT_UPLOAD.IMG_FOLDER . "$imgFilename\">";
+        echo "<input type=\"hidden\" name=\"srcPoster\" value=\"" . CONTENT_UPLOAD . IMG_FOLDER . "$imgFilename\">";
     } else {
         die('<p class="alert alert-danger">Une erreur est survenue lors de l\'upload!</p>');
     }

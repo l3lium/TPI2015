@@ -15,15 +15,22 @@ if (filter_input(INPUT_POST, 'edit')) {
     $msg = "";
     $valide = true;
     $username = filter_input(INPUT_POST, 'username');
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
     if (!$username) {
         $valide = FALSE;
         $msg = 'Le nom d\'utilisateur n\'est pas valide.';
+    } elseif (!$email) {
+        $valide = FALSE;
+        $msg = 'L\'addresse email n\'est pas valide.';
+    } elseif (getUserByEmail($email)) {
+        $valide = FALSE;
+        $msg = 'Cette addresse email est déjà utilisée.';
     }
 
-    if ($valide && $username != $_SESSION["username"]) {
-        updateActualUsername($username);
-        $msg = "Votre nom d'utilisateur a été modifié";
+    if ($valide) {
+        updateUserConnected($username, $email);
+        $msg = "Les modifications ont été enregistrés.";
     }
 }
 ?>
@@ -37,7 +44,7 @@ and open the template in the editor.
     <?php getHeaderHtml("Profil - " . $_SESSION["username"]); ?>
     <body>
         <?php
-        getHeader();
+        getFullHeader();
         ?>
         <!-- CONTAINER -->
         <div class="container">
@@ -54,11 +61,11 @@ and open the template in the editor.
                     <div class="form-group">
                         <label for="Email" class="col-sm-4 control-label">Email : </label>
                         <div class="col-sm-8">
-                            <p><?php echo $_SESSION["email"]; ?></p>
+                            <input type="text" class="form-control" name="email" value="<?php echo $_SESSION["email"]; ?>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Email" class="col-sm-4 control-label">Mot de passe : </label>
+                        <label for="" class="col-sm-4 control-label">Mot de passe : </label>
                         <div class="col-sm-8">
                             <a class="form-link" href="<?php echo ROOT_SITE . "/user/editPassword.php"; ?>">Modifier votre mot de passe</a>
                         </div>
@@ -90,5 +97,6 @@ and open the template in the editor.
                 </form>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>

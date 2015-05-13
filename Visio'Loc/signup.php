@@ -32,8 +32,10 @@ if (filter_input(INPUT_POST, 'signup')) {
     }
 
     if ($valide) {
-        $id = createUser($email, $pseudo, $pass);
-        if ($id == 0) {
+        $id = createUser($email, $pseudo);
+        if ($id != 0) {
+            updatePasswordById($id, hashPerso($pass, $id));
+        }else{
             $valide = FALSE;
             $erreur = 'Une erreur est survenu lors de l\'inscription. Veuillez réessayer ulterieurement.';
         }
@@ -49,7 +51,7 @@ and open the template in the editor.
 <html>
     <?php getHeaderHtml("Inscription"); ?>
     <body>
-        <?php getHeader(); ?>
+        <?php getFullHeader(); ?>
         <!-- CONTAINER -->
         <div class="container">
             <div class="center-block">
@@ -57,14 +59,14 @@ and open the template in the editor.
                 <h5>Inscrivez-vous sur Visio'Loc pour pouvoir acheter et louer des films</h5><hr/>
                 <?php
                 if (isset($valide) && $valide) {
-                    header("refresh:5; url=" . ROOT_SITE . "/signin.php");
+                    header("refresh:5; url=" . ROOT_SITE . "signin.php");
                     ?>
                     <div class="alert alert-success" role="alert">
                         <p>Votre inscription a été effectué avec succès. <i>Vous allez être redirigé sur la page de connexion automatiquement.</i></p>
                     </div>
                 <?php } else { ?>
                     <!-- CONTAINER LOGIN -->
-                    <form class="form form-signin" method="post" action="<?php echo ROOT_SITE . "/signup.php"; ?>">
+                    <form class="form form-signin" method="post" action="<?php echo ROOT_SITE . "signup.php"; ?>">
 
                         <label class="">Nom utilisateur :</label><input class="form-control" name="username" type="text" value="<?php
                         if (isset($valide) && !$valide) {
@@ -88,5 +90,6 @@ and open the template in the editor.
                 <?php } ?>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>

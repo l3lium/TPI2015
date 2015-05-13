@@ -1,4 +1,5 @@
 <?php
+
 /*
   ======Specific functions======
   Auteur: 	Oliveira Stéphane
@@ -21,10 +22,11 @@ function isAdmin() {
     return ($_SESSION['usertype'] == 2);
 }
 
-/**isAccountTemp
+/* * isAccountTemp
  * Test si compte utilisateur connecté est temporaire
  * @return bool
  */
+
 function isAccountTemp() {
     return ($_SESSION['temporary']);
 }
@@ -39,12 +41,13 @@ function isConnected() {
 
 /* * HashPerso
  * Hash le mot de passe
- * @param string $value
- * @return string
+ * @param string $password le mot de passe à hacher
+ * @param string $id l'identifiant utilisateur
+ * @return string le mot de passe hacher
  */
-function hashPerso($password, $email) {
+function hashPerso($password, $id) {
     $derp = $password . 'SaaS';
-    return sha1(md5($derp) . $email);
+    return sha1(md5($derp).$id);
 }
 
 function checkImageType($fileType) {
@@ -55,11 +58,16 @@ function checkVideoType($fileType) {
     return in_array($fileType, unserialize(ALLOWED_VIDEO_TYPES));
 }
 
+function checkSubtitleType($fileType) {
+    return in_array($fileType, unserialize(ALLOWED_SUBS_TYPES));
+}
+
 /** goHome
  * Redirige l'utilisateur à l'accueil
  */
 function goHome() {
-    header('Location: ' . ROOT_SITE . '/index.php');
+    header('Location: ' . ROOT_SITE . 'index.php');
+    exit();
 }
 
 /** redirectTempAccount
@@ -73,8 +81,8 @@ function redirectTempAccount() {
 
 /** generatePassword
  * Génère un mot de passe aléatoirement
- * @param integer $length
- * @param string $chars
+ * @param integer $length la longueur du mot de passe
+ * @param string $chars les caractères valide pour la génération
  * @return string
  */
 function generatePassword($length = 8, $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') {
@@ -96,10 +104,16 @@ function getMsgTempPass($username, $newPass) {
             "L'équipe Visio'Loc";
 }
 
+function formatDate($str) {
+    $date = date_create($str);
+    return date_format($date, 'd/m/Y');
+}
+
 /* * debug
  * affiche de façon formatté une variable 
  * @param string $sObj
  */
+
 function debug($sObj = NULL) {
     echo '<pre>';
     if (is_null($sObj)) {

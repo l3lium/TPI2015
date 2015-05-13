@@ -35,14 +35,14 @@ if (filter_input(INPUT_POST, 'editPassword')) {
     //Test ancien mot de passe
     $user = getUserById($_SESSION["id"]);
 
-    if (!isAccountTemp() && $user->password != hashPerso($oldPass, $_SESSION["email"])) {
+    if (!isAccountTemp() && $user->password != hashPerso($oldPass, $_SESSION["id"])) {
         $valide = FALSE;
         $erreur = 'L\'ancien mot de passe n\'est pas correct.';
     }
 
     //modificaiton du mot de passe
     if ($valide) {
-        updateActualUserPassword(hashPerso($newPass, $_SESSION["email"]));
+        updateActualUserPassword(hashPerso($newPass, $_SESSION["id"]));
     }
 }
 ?>
@@ -56,7 +56,7 @@ and open the template in the editor.
     <?php getHeaderHtml("Modification mot de passe"); ?>
     <body>
         <?php
-        getHeader();
+        getFullHeader();
         ?>
         <!-- CONTAINER -->
         <div class="container">
@@ -102,5 +102,6 @@ and open the template in the editor.
                 <?php } ?>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>

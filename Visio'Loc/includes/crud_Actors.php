@@ -12,7 +12,6 @@ require_once 'basics_bdd.php';
 
 $table_Actors = 'actors';
 $table_Creators = 'creators';
-$laison = 'movies_has_';
 
 function addActor(){
     
@@ -51,8 +50,8 @@ function addCreatorsMovie($id, $creators){
 }
 
 function addPersonsMovie($id, $persons, $table){
-    global $laison;
-    $newTable = $laison.$table;
+    global $movie_liaison;
+    $newTable = $movie_liaison.$table;
     $dbc = connection();
     $dbc->quote($newTable);
     
@@ -70,12 +69,14 @@ function addPersonsMovie($id, $persons, $table){
 
 function getAllActors(){
     global $table_Actors;
-    return getAllFields($table_Actors);
+    $cond = "ORDER BY firstName ASC";
+    return getAllFieldsCondition($table_Actors, $cond);
 }
 
 function getAllCreators(){
     global $table_Creators;
-    return getAllFields($table_Creators);
+    $cond = "ORDER BY firstName ASC";
+    return getAllFieldsCondition($table_Creators, $cond);
 }
 
 function getActorsByMovieId($id, $type = PDO::FETCH_OBJ){
@@ -89,8 +90,8 @@ function getCreatorsByMovieId($id, $type = PDO::FETCH_OBJ){
 }
 
 function getPeopleByMovieId($id, $table, $type = PDO::FETCH_OBJ){
-    global $laison;
-    $newTable = $laison.$table;
+    global $movie_liaison;
+    $newTable = $movie_liaison.$table;
 
     $dbc = connection();
     $dbc->quote($newTable);
@@ -117,14 +118,18 @@ function getCreatorsIdByMovieId($id) {
 
 function deleteAllActorsByMovieId($id){
     global $table_Actors;
+    global $movie_liaison;
+    $newTable = $movie_liaison.$table_Actors;
     
     $condition="WHERE idMovie = $id";
-    return deleteFieldCondition($table_Actors, $condition);
+    return deleteFieldCondition($condition, $newTable);
 }
 
 function deleteAllCreatorsByMovieId($id){
     global $table_Creators;
+    global $movie_liaison;
+    $newTable = $movie_liaison.$table_Creators;
     
     $condition="WHERE idMovie = $id";
-    return deleteFieldCondition($table_Creators, $condition);
+    return deleteFieldCondition($condition, $newTable);
 }

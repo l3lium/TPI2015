@@ -91,10 +91,28 @@ function getFieldById($id, $table){
     return $requPrep->fetch(PDO::FETCH_OBJ);
 }
 
+/** getFieldCondition
+ * Retourne un enregistrement selon une condition et une table
+ * @param string $table le nom de la table
+ * @param string $condition la condition
+ * @return PDO::FETCH_OBJ résultat de la requette
+ */
+function getFieldCondition($condition, $table){
+    $dbc = connection();
+    $dbc->quote($table);
+    $dbc->quote($condition);
+    $req = "SELECT * FROM $table $condition";
+    // preparation de la requete
+    $requPrep = $dbc->prepare($req); // on prépare notre requête
+    $requPrep->execute();
+
+    return $requPrep->fetch(PDO::FETCH_OBJ);
+}
+
 /** getAllFields
  * Cette fonction retourne tous les enregistrements de la table passée en paramètre
  * @param String $table
- * @return PDO::FETCH_OBJ
+ * @return PDO::FETCH_OBJ résultat de la requette
  */
 function getAllFields($table){
     $dbc= connection();
@@ -108,6 +126,12 @@ function getAllFields($table){
     return $data;
 }
 
+/** getAllFieldsCondition
+ * Retourne tous les enregistrements selon une table et une condition
+ * @param string $table le nom de la table
+ * @param string $condition la condition
+ * @return PDO::FETCH_OBJ résultat de la requette
+ */
 function getAllFieldsCondition($table, $condition){
     $dbc = connection();
     $dbc->quote($table);
@@ -128,11 +152,11 @@ function getAllFieldsCondition($table, $condition){
  * @param Integer $page
  * @param Integer $nbRow
  * @param String $table
- * @return PDO::FETCH_OBJ
+ * @return PDO::FETCH_OBJ résultat de la requette
  */
-function getPaginationQuerry($page = 0, $nbRow = 0, $query) {
+function getPaginationQuerry($page = 1, $nbRow = 0, $query) {
     $dbc = connection();
-    $offset= $page*$nbRow;
+    $offset= ($page-1)*$nbRow;
 
     $req = $query." LIMIT :offset , :max ";//Ajout de la limite pour la pagination
     // preparation de la requete
@@ -152,12 +176,12 @@ function getPaginationQuerry($page = 0, $nbRow = 0, $query) {
  * @param Integer $page
  * @param Integer $nbRow
  * @param String $table
- * @return PDO::FETCH_OBJ
+ * @return PDO::FETCH_OBJ résultat de la requette
  */
-function getFieldsPagination($page = 0, $nbRow = 0, $table) {
+function getFieldsPagination($page = 1, $nbRow = 0, $table) {
     $dbc = connection();
     $dbc->quote($table);
-    $offset= $page*$nbRow;
+    $offset= ($page-1)*$nbRow;
     
     $req = "SELECT * FROM $table LIMIT :offset , :max ";//Ajout de la limite pour la pagination
     // preparation de la requete
@@ -174,13 +198,13 @@ function getFieldsPagination($page = 0, $nbRow = 0, $table) {
  * Cette fonction supprime un enregistrement de la table donnée en paramètre grâce à 
  * l'id également donnée en paramètre
  * @param Integer $id
- * @param String $table
+ * @param String $table résultat de la requette
  */
 function deleteFieldById($id, $table){
     $dbc= connection();
     $dbc->quote($table);
     $req = "DELETE FROM $table WHERE id=:id";
-	
+
     $requPrep = $dbc->prepare($req); // on prépare notre requête
     $requPrep->bindParam(':id', $id, PDO::PARAM_INT);
     $requPrep->execute();
@@ -192,7 +216,7 @@ function deleteFieldById($id, $table){
  * Cette fonction supprime un enregistrement de la table donnée en paramètre grâce à 
  * l'id également donnée en paramètre
  * @param Integer $id
- * @param String $table
+ * @param String $table résultat de la requette
  */
 function deleteFieldCondition($condition, $table){
     $dbc= connection();
@@ -206,30 +230,3 @@ function deleteFieldCondition($condition, $table){
     $requPrep->closeCursor();
     return $data;
 }
-
-
- /*=========================WORK IN PROGRESS============================
-/** updateFieldById
- * Cette fonction met à jour un enregistrement de la table donnée en paramètre grâce à 
- * l'id donnée en paramètre et les données passées en paramètre sous la forme 
- * d'un tableau assiocatif avec comme clé les noms des champs exact dans la base de donnée.
- * @param Integer $id
- * @param String $table
- * @param Array $data
- *//*
-function updateFieldById($id, $table, $data) {
-    $dbc= connection();
-    $req = "UPDATE images SET "
-	$nbRow=count($data);
-	foreach ($data as $key => $value){
-		if ($nbRow-1 ==)
-		$req .= "$key=$value,";
-		
-	}
-	$req .= " WHERE id=$id";
-    // preparation de la requete
-    $requPrep = $dbc->prepare($req); // on prépare notre requête
-    $requPrep->execute();
-    
-}
-*/

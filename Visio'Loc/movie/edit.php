@@ -16,6 +16,8 @@ if ($id = filter_input(INPUT_GET, 'id')) {
     }
 }
 
+//debug($movie);
+
 if (filter_input(INPUT_POST, 'editMovie')) {
     $valide = true;
     $title = filter_input(INPUT_POST, 'title');
@@ -98,7 +100,7 @@ and open the template in the editor.
     <?php getHeaderHtml("Modification de $movie->title"); ?>
     <body>
         <?php
-        getHeader();
+        getFullHeader();
         ?>
         <!-- CONTAINER -->
         <div class="container">
@@ -107,14 +109,14 @@ and open the template in the editor.
                 <h5>Information du film</h5><hr/>
                 <?php
                 if (isset($valide) && $valide) {
-                    header("refresh:5; url=" . ROOT_SITE . "/movie/fiche.php?id=$id");
+                    header("refresh:5; url=" . ROOT_SITE . "movie/detail.php?id=$id");
                     ?>
                     <div class="alert alert-success" role="alert">
-                        <p>Le film a été ajouter dans la base de données. <i>Vous allez être redirigé sur la fiche du film automatiquement.</i></p>
+                        <p>Le film a été modifié. <i>Vous allez être redirigé sur la fiche du film automatiquement.</i></p>
                     </div>
                 <?php } else { ?>
                     <!-- CONTAINER ADD MOVIE -->
-                    <form id="form-edit-movie"class="form" enctype="multipart/form-data" method="post" action="<?php echo ROOT_SITE . "/movie/edit.php?id=$id"; ?>">
+                    <form id="form-edit-movie"class="form" enctype="multipart/form-data" method="post" action="<?php echo ROOT_SITE . "movie/edit.php?id=$id"; ?>">
                         <?php
                         if (isset($valide) && !$valide) {
                             echo '<p class="alert alert-danger" role="alert">' . $erreur . '</p>';
@@ -139,7 +141,7 @@ and open the template in the editor.
                                         <input id="input-poster" type="file" name="poster" accept="image/*">
                                     </div>
                                     <div id="upload-poster" class="form-group hidden">
-                                        <button data-url-upload="<?php echo ROOT_SITE . "/up-content/uploadPoster.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
+                                        <button data-url-upload="<?php echo ROOT_SITE . "up-content/uploadPoster.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
                                     </div>
                                     <div class="progress hidden">
                                         <div id="progress-bar-poster" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0"
@@ -163,7 +165,7 @@ and open the template in the editor.
                                         <input id="input-video" type="file" name="video" accept="video/mp4,video/webm">
                                     </div>
                                     <div id="upload-video" class="form-group hidden">
-                                        <button data-url-upload="<?php echo ROOT_SITE . "/up-content/uploadVideo.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
+                                        <button data-url-upload="<?php echo ROOT_SITE . "up-content/uploadVideo.php"; ?>" type="button" class="btn btn-sm btn-success">Upload</button>
                                     </div>
                                     <div class="progress hidden">
                                         <div id="progress-bar-video" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0"
@@ -189,12 +191,13 @@ and open the template in the editor.
                         <?php
                         getSelectActors($actors);
                         ?>
-                        <input name="editMovie" class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter le film"/>
+                        <input name="editMovie" class="btn btn-lg btn-primary btn-block" type="submit" value="Enregistrer les modifications"/>
                     </form>
                     <?php
                 }
                 ?>
             </div>
         </div>
+        <?php getFooter(); ?>
     </body>
 </html>
